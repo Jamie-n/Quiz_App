@@ -1,0 +1,27 @@
+.root{
+    -fx-background-image: url("../imgRrc/background.png");
+    -fx-background-size: 1030px, 650px;
+}
+
+#startButton{
+    -fx-font:bold 20pt "Arial";
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-size: 290px,300px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("../imgRrc/button.png");
+}
+
+#startButton:hover{
+    -fx-font:bold 20pt "Arial";
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-size: 290px,300px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("../imgRrc/buttonHover.png");
+}
+
