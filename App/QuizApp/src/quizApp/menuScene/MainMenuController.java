@@ -22,9 +22,7 @@ public class MainMenuController {
 
     public void nextScene(ActionEvent actionEvent) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../optionScene/QuizSelect.fxml"));
-        Stage secondStage =  (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        secondStage.setTitle("Quiz");
-        secondStage.getIcons().add(new Image("/quizApp/imgRrc/logoIcon.png"));
+        Stage secondStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         secondStage.setScene(new Scene(root));
         secondStage.show();
     }

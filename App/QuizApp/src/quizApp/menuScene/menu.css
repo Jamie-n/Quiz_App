@@ -6,7 +6,6 @@
 /*button animation*/
 #quizzesButton, #quizzesButton:hover, #exitButton, #exitButton:hover{
     -fx-font:bold 20pt "Arial";
-    -fx-font-size: 30;
     -fx-text-fill: white;
     -fx-background-color: transparent;
     -fx-background-radius: 0;

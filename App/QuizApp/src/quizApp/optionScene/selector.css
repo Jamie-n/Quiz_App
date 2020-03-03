@@ -5,7 +5,6 @@
 
 #startButton, #startButton:hover{
     -fx-font:bold 20pt "Arial";
-    -fx-font-size: 30;
     -fx-text-fill: white;
     -fx-background-color: transparent;
     -fx-background-radius: 0;
@@ -25,3 +24,47 @@
     -fx-effect: none;
 }
 
+/* mini Buttons*/
+
+#decrementButton, #decrementButton:pressed, #incrementButton, #incrementButton:pressed, #backButton, #backButton:pressed{
+    -fx-font:bold 10pt "Arial";
+    -fx-text-fill: white;
+    -fx-background-color: #537a7b;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.7), 10,0,0,0);
+}
+
+#incrementButton:hover, #decrementButton:hover, #backButton:hover{
+    -fx-background-color: #8cc5c6;
+}
+
+#incrementButton:pressed, #decrementButton:pressed, #backButton:pressed{
+    -fx-effect: none;
+}
+
+#incrementLabel{
+    -fx-background-color: rgba(255, 255, 255, 0.56);
+    -fx-alignment: Center;
+}
+
+#difficultyLabel, #maxLabel, #catagoryLabel{
+    -fx-alignment: center;
+    -fx-background-color: rgba(15, 30, 31, 0.53);
+}
+
+#customPane{
+    -fx-background-color: rgba(83, 122, 123, 0.83);
+}
+
+.combo-box, .list-view, .list-cell, .list-cell:filled:selected{
+    -fx-font:bold 10pt "Arial";
+    -fx-text-fill: white;
+    -fx-background-color: #537a7b;
+}
+
+.list-view{
+    -fx-background-color: #7aabac;
+}
+
+.list-view:filled:selected{
+    -fx-background-color: #395354;
+}
