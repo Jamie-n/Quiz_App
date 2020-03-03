@@ -2,7 +2,17 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="638" prefWidth="1020" stylesheets="@selector.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.optionScene.QuizSelectorController">
     <Button fx:id="startButton" layoutX="365.0" layoutY="527.0" mnemonicParsing="false" prefHeight="72" prefWidth="290" text="Start Quiz" />
+   <Button layoutX="22.0" layoutY="22.0" mnemonicParsing="false" text="Back" />
+   <ListView layoutX="223.0" layoutY="86.0" prefHeight="379.0" prefWidth="575.0" />
+   <Button fx:id="incrementButton" layoutX="120.0" layoutY="477.0" mnemonicParsing="false" text="^" />
+   <Button fx:id="decrementButton" layoutX="120.0" layoutY="502.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="v" />
+   <Label fx:id="incrementLabel" layoutX="145.0" layoutY="477.0" prefHeight="51.0" prefWidth="43.0" text="null" textAlignment="CENTER">
+      <font>
+         <Font name="System Italic" size="23.0" />
+      </font>
+   </Label>
 </AnchorPane>
