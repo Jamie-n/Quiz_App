@@ -14,7 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("menuScene/MenuScene.fxml"));
         primaryStage.getIcons().add(new Image("/quizApp/imgRrc/logoIcon.png"));
         primaryStage.setTitle("Quiz");
-        primaryStage.setScene(new Scene(root, 1024, 640));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

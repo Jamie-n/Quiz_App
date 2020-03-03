@@ -4,7 +4,7 @@
 }
 
 /*button animation*/
-#quizzesButton{
+#quizzesButton, #quizzesButton:hover, #exitButton, #exitButton:hover{
     -fx-font:bold 20pt "Arial";
     -fx-font-size: 30;
     -fx-text-fill: white;
@@ -13,40 +13,15 @@
     -fx-background-size: 290px,300px;
     -fx-background-repeat: no-repeat;
     -fx-background-image: url("../imgRrc/button.png");
-
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.7), 10,0,0,0);
 }
 
-#quizzesButton:hover{
-    -fx-font:bold 20pt "Arial";
-    -fx-font-size: 30;
-    -fx-text-fill: white;
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-background-size: 290px,300px;
-    -fx-background-repeat: no-repeat;
+#quizzesButton:hover, #exitButton:hover{
     -fx-background-image: url("../imgRrc/buttonHover.png");
-
 }
 
-#exitButton{
-    -fx-font:bold 20pt "Arial";
-    -fx-font-size: 30;
-    -fx-text-fill: white;
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-background-size: 290px,300px;
-    -fx-background-repeat: no-repeat;
+#quizzesButton:pressed, #exitButton:pressed{
     -fx-background-image: url("../imgRrc/button.png");
-}
-
-#exitButton:hover{
-    -fx-font:bold 20pt "Arial";
-    -fx-font-size: 30;
-    -fx-text-fill: white;
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-background-size: 290px,300px;
-    -fx-background-repeat: no-repeat;
-    -fx-background-image: url("../imgRrc/buttonHover.png");
+    -fx-effect: none;
 }
 

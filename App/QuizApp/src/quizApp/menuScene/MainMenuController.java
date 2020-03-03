@@ -1,5 +1,6 @@
 package quizApp.menuScene;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,7 +12,8 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 public class MainMenuController {
-    public Button exitButton;
+    @FXML
+    private Button exitButton;
 
     public void closeWindow(ActionEvent actionEvent) {
         Stage window = (Stage)exitButton.getScene().getWindow();
@@ -23,7 +25,7 @@ public class MainMenuController {
         Stage secondStage =  (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         secondStage.setTitle("Quiz");
         secondStage.getIcons().add(new Image("/quizApp/imgRrc/logoIcon.png"));
-        secondStage.setScene(new Scene(root, 1024, 640));
+        secondStage.setScene(new Scene(root));
         secondStage.show();
     }
 }
