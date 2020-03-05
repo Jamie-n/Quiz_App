@@ -1,5 +1,6 @@
 package quizApp.optionScene;
 
+import com.sun.tools.corba.se.idl.InterfaceGen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,9 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import quizApp.questionScene.QuestionController;
 import quizApp.quizz.Categories;
@@ -23,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class OptionController implements Initializable {
     @FXML
-    private Label incrementLabel;
+    private TextField incrementLabel;
 
     @FXML
     private ComboBox<String> difficultyCmbox;
@@ -36,7 +35,9 @@ public class OptionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         difficultyCmbox.getItems().addAll("Easy", "Medium", "Hard");
+
         try {
+
             ObservableList<Categories> category = FXCollections.observableArrayList(urlRequest.getCategories());
             categoryList.getItems().addAll(category);
 
@@ -47,25 +48,37 @@ public class OptionController implements Initializable {
     }
 
     public void incrementLabel(ActionEvent actionEvent) {
-        int val = Integer.parseInt(incrementLabel.getText());
-        if (val < 50) {
-            incrementLabel.setText("" + (val + 1));
+        try {
+            int val = Integer.parseInt(incrementLabel.getText());
+            if (val < 50) {
+                incrementLabel.setText("" + (val + 1));
+            }
+        } catch (NumberFormatException e) {
+            incrementLabel.setText("Num Only");
         }
     }
 
     public void decrementLabel(ActionEvent actionEvent) {
-        int val = Integer.parseInt(incrementLabel.getText());
-        if (val > 0) {
-            incrementLabel.setText("" + (val - 1));
+        try {
+            int val = Integer.parseInt(incrementLabel.getText());
+            if (val > 0) {
+                incrementLabel.setText("" + (val - 1));
+            }
+        } catch (NumberFormatException e) {
+            incrementLabel.setText("Num Only");
         }
     }
 
-    public int getQuestionNum() {
+    public Integer getQuestionNum() {
         return Integer.parseInt(incrementLabel.getText());
     }
 
-    public int getCategory() {
+    public Integer getCategory() {
         return categoryList.getSelectionModel().getSelectedIndex();
+    }
+
+    public String getDifficulty() {
+        return difficultyCmbox.getSelectionModel().getSelectedItem();
     }
 
     public void backToMenu(ActionEvent actionEvent) throws Exception {
@@ -75,19 +88,28 @@ public class OptionController implements Initializable {
         firstStage.show();
     }
 
-    public void startQuiz(ActionEvent actionEvent) throws Exception{
+    public void startQuiz(ActionEvent actionEvent) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../questionScene/QuestionScene.fxml"));
+        Parent scene = loader.load();
         QuestionController questionController = loader.getController();
 
-        Parent scene = loader.load();
-        Stage thirdStage =  (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        thirdStage.setScene(new Scene(scene));
+        if (getCategory().equals(-1) || getQuestionNum().equals(0) || getDifficulty()==null) {
 
-        questionController.setQuestionCategory(getCategory());
-        questionController.setQuestionDifficulty(difficultyCmbox.getSelectionModel().getSelectedItem());
-        questionController.setTotalQuestions(getQuestionNum());
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please make selections", ButtonType.OK);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.show();
 
-        thirdStage.show();
+        } else {
+
+            questionController.setQuestionCategory(getCategory());
+            questionController.setQuestionDifficulty(getDifficulty());
+            questionController.setTotalQuestions(getQuestionNum());
+
+            Stage thirdStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            thirdStage.setScene(new Scene(scene));
+            thirdStage.show();
+        }
     }
 
 

@@ -1,20 +1,21 @@
 .root{
-    -fx-background-image: url("../imgRrc/background.png");
+    -fx-background-image: url("../imgRrc/questionbackground.png");
     -fx-background-size: 1024px, 640px;
 }
 
-#startButton, #startButton:hover{
-    -fx-font:bold 20pt "Arial";
-    -fx-text-fill: white;
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-background-size: 290px,300px;
-    -fx-background-repeat: no-repeat;
-    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.7), 10,0,0,0);
-    -fx-background-image: url("../imgRrc/button.png");
+
+
+.button:hover{
+    -fx-background-color: #8cc5c6;
 }
 
-#startButton:hover{
-    -fx-background-image: url("../imgRrc/buttonHover.png");
+.button, .button:pressed{
+    -fx-font:bold 10pt "Arial";
+    -fx-text-fill: white;
+    -fx-background-color: #537a7b;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.7), 10,0,0,0);
+}
 
+.button:pressed{
+    -fx-effect: none;
 }

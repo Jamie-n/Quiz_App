@@ -26,18 +26,18 @@
 
 /* mini Buttons*/
 
-#decrementButton, #decrementButton:pressed, #incrementButton, #incrementButton:pressed, #backButton, #backButton:pressed{
+.button, .button:pressed{
     -fx-font:bold 10pt "Arial";
     -fx-text-fill: white;
     -fx-background-color: #537a7b;
     -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.7), 10,0,0,0);
 }
 
-#incrementButton:hover, #decrementButton:hover, #backButton:hover{
+.button:hover{
     -fx-background-color: #8cc5c6;
 }
 
-#incrementButton:pressed, #decrementButton:pressed, #backButton:pressed{
+.button:pressed{
     -fx-effect: none;
 }
 
@@ -46,7 +46,7 @@
     -fx-alignment: Center;
 }
 
-#difficultyLabel, #maxLabel, #catagoryLabel{
+.label{
     -fx-alignment: center;
     -fx-background-color: rgba(15, 30, 31, 0.53);
 }
@@ -55,8 +55,11 @@
     -fx-background-color: rgba(83, 122, 123, 0.83);
 }
 
+#difficultyCmbox{
+    -fx-font:bold 8pt "Arial";
+}
+
 .combo-box, .list-view, .list-cell{
-    -fx-font:bold 10pt "Arial";
     -fx-text-fill: white;
     -fx-background-color: #537a7b;
 }

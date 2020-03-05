@@ -27,8 +27,7 @@ public class QuestionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        //this.triviaQuestions.addAll(new UrlRequest().getQuestions(totalQuestions, questionCategory, questionDifficulty));
-        //questionData();
+
     }
 
     public void finishQuiz(ActionEvent actionEvent){
@@ -48,7 +47,7 @@ public class QuestionController implements Initializable {
     }
 
     public void questionData(){
-        //questionLabel.setText(triviaQuestions.get(onQuestion).getQuestion());
+        questionLabel.setText(triviaQuestions.get(onQuestion).getQuestion());
     }
 
     public void setTotalQuestions(int totalQuestions) {
@@ -60,6 +59,6 @@ public class QuestionController implements Initializable {
     }
 
     public void setQuestionDifficulty(String questionDifficulty) {
-        this.questionLabel.setText(questionDifficulty);
+        this.questionDifficulty = questionDifficulty;
     }
 }

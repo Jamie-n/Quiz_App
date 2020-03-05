@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="640" prefWidth="1024" stylesheets="QuestionStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.questionScene.QuestionController">
+<AnchorPane prefHeight="640" prefWidth="1024" stylesheets="@QuestionStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.questionScene.QuestionController">
    <children>
       <Label fx:id="questionLabel" layoutX="187.0" layoutY="94.0" prefHeight="114.0" prefWidth="611.0" text="Question">
          <font>
@@ -12,9 +12,9 @@
          </font>
       </Label>
       <Label fx:id="timerLabel" layoutX="934.0" layoutY="33.0" text="timer" />
-      <Button fx:id="answerButton1" layoutX="82.0" layoutY="296.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="414.0" text="answer1" />
-      <Button fx:id="answerButton3" layoutX="82.0" layoutY="461.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="414.0" text="answer3" />
-      <Button fx:id="answerButton2" layoutX="528.0" layoutY="296.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="414.0" text="answer2" />
-      <Button fx:id="answerButton4" layoutX="528.0" layoutY="461.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="414.0" text="answer4" />
+      <Button fx:id="answerButton1" layoutX="79.0" layoutY="461.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer1" />
+      <Button fx:id="answerButton3" layoutX="79.0" layoutY="320.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer3" />
+      <Button fx:id="answerButton2" layoutX="519.0" layoutY="320.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer2" />
+      <Button fx:id="answerButton4" layoutX="519.0" layoutY="461.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer4" />
    </children>
 </AnchorPane>
