@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="640" prefWidth="1024" stylesheets="@selector.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.optionScene.QuizSelectorController">
+<AnchorPane prefHeight="640" prefWidth="1024" stylesheets="@QSelectorStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.optionScene.QuizSelectorController">
     <Button fx:id="startButton" layoutX="365.0" layoutY="520.0" mnemonicParsing="false" prefHeight="72" prefWidth="290" text="Start Quiz" />
    <Button fx:id="backButton" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="34.0" prefWidth="80.0" text="Back" />
-   <ListView fx:id="genreList" layoutX="163.0" layoutY="98.0" prefHeight="379.0" prefWidth="575.0" />
+   <ListView fx:id="categoryList" layoutX="163.0" layoutY="98.0" prefHeight="379.0" prefWidth="575.0" />
    <AnchorPane fx:id="customPane" layoutX="787.0" layoutY="372.0" prefHeight="113.0" prefWidth="171.0">
       <children>
          <Button fx:id="incrementButton" layoutX="45.0" layoutY="32.0" mnemonicParsing="false" onAction="#incrementLabel" text="^" />
