@@ -16,7 +16,7 @@ public class UrlRequest {
     private static HttpURLConnection connection;
 
 
-    public ArrayList<TriviaQuestion> getQuestions(int numberOfQs,int cat) {
+    public ArrayList<TriviaQuestion> getQuestions(int numberOfQs,int cat, String questionDiff) {
 
 
         BufferedReader reader;
@@ -24,7 +24,7 @@ public class UrlRequest {
         StringBuffer responseContent = new StringBuffer();
 
         try {
-            URL url = new URL("https://opentdb.com/api.php?amount="+numberOfQs+"&category="+cat);
+            URL url = new URL("https://opentdb.com/api.php?amount="+numberOfQs+"&category="+cat+"&category"+questionDiff);
 
             responseContent = makeRequest(url);
 

@@ -10,12 +10,12 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage firstStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("menuScene/MenuScene.fxml"));
-        primaryStage.getIcons().add(new Image("/quizApp/imgRrc/logoIcon.png"));
-        primaryStage.setTitle("Quiz");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        firstStage.getIcons().add(new Image("/quizApp/imgRrc/logoIcon.png"));
+        firstStage.setTitle("Quiz");
+        firstStage.setScene(new Scene(root));
+        firstStage.show();
     }
 
     public static void main(String[] args) {

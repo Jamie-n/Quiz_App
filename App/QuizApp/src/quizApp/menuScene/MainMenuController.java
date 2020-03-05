@@ -6,11 +6,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
-import quizApp.questionScene.QuestionController;
 
 public class MainMenuController {
     @FXML
@@ -22,7 +20,7 @@ public class MainMenuController {
     }
 
     public void nextScene(ActionEvent actionEvent) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../optionScene/QuizSelect.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../optionScene/OptionScene.fxml"));
         Stage secondStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         secondStage.setScene(new Scene(root));
         secondStage.show();

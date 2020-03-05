@@ -1,6 +1,6 @@
 .root{
     -fx-background-image: url("../imgRrc/background.png");
-    -fx-background-size: 1030px, 650px;
+    -fx-background-size: 1024px, 640px;
 }
 
 #startButton, #startButton:hover{
