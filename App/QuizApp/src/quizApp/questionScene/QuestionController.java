@@ -18,8 +18,8 @@ public class QuestionController implements Initializable {
     @FXML
     private Label timerLabel;
 
-    private int totalQuestions;
-    private int questionCategory;
+    private Integer totalQuestions;
+    private Integer questionCategory;
     private String questionDifficulty;
     private int quizScore;
     private int onQuestion = 0;

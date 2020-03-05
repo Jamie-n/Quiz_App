@@ -79,13 +79,14 @@ public class OptionController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../questionScene/QuestionScene.fxml"));
         QuestionController questionController = loader.getController();
 
-        //questionController.setQuestionCategory(getCategory());
-        //questionController.setQuestionDifficulty(difficultyCmbox.getSelectionModel().getSelectedItem());
-        questionController.setTotalQuestions(getQuestionNum());
-
         Parent scene = loader.load();
         Stage thirdStage =  (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         thirdStage.setScene(new Scene(scene));
+
+        questionController.setQuestionCategory(getCategory());
+        questionController.setQuestionDifficulty(difficultyCmbox.getSelectionModel().getSelectedItem());
+        questionController.setTotalQuestions(getQuestionNum());
+
         thirdStage.show();
     }
 
