@@ -19,3 +19,14 @@
 .button:pressed{
     -fx-effect: none;
 }
+
+#questionLabel{
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-background-color: rgba(15, 30, 31, 0.53);
+}
+
+#timerLabel{
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}

@@ -22,8 +22,6 @@ public class QuestionController implements Initializable {
     private Integer questionCategory;
     private String questionDifficulty;
     private int quizScore;
-    private int onQuestion = 0;
-    private ArrayList<TriviaQuestion> triviaQuestions = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -44,10 +42,6 @@ public class QuestionController implements Initializable {
 
     public void incorrectAnswer(ActionEvent actionEvent){
 
-    }
-
-    public void questionData(){
-        questionLabel.setText(triviaQuestions.get(onQuestion).getQuestion());
     }
 
     public void setTotalQuestions(int totalQuestions) {

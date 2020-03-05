@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="638" prefWidth="1020" stylesheets="@selector.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.optionScene.QuizSelectorController">
-    <Button fx:id="startButton" layoutX="365.0" layoutY="527.0" mnemonicParsing="false" prefHeight="72" prefWidth="290" text="Start Quiz" />
-</AnchorPane>
