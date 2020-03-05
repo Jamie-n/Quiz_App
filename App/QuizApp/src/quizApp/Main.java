@@ -15,6 +15,8 @@ public class Main extends Application {
         firstStage.getIcons().add(new Image("/quizApp/imgRrc/logoIcon.png"));
         firstStage.setTitle("Quiz");
         firstStage.setScene(new Scene(root));
+        firstStage.setResizable(false);
+        firstStage.setMaximized(false);
         firstStage.show();
     }
 

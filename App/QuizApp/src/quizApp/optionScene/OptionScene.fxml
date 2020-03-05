@@ -6,13 +6,13 @@
 
 <AnchorPane prefHeight="640" prefWidth="1024" stylesheets="@OptionStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.optionScene.OptionController">
     <Button fx:id="startButton" layoutX="365.0" layoutY="520.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="72" prefWidth="290" text="Start Quiz" />
-   <Button fx:id="backButton" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="34.0" prefWidth="80.0" text="Back" />
-   <ListView fx:id="categoryList" layoutX="163.0" layoutY="98.0" prefHeight="379.0" prefWidth="575.0" />
-   <AnchorPane fx:id="customPane" layoutX="787.0" layoutY="372.0" prefHeight="113.0" prefWidth="171.0">
+   <Button fx:id="backButton" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="25.0" prefWidth="80.0" text="Back" />
+   <ListView fx:id="categoryList" layoutX="113.0" layoutY="90.0" prefHeight="394.0" prefWidth="575.0" />
+   <AnchorPane fx:id="customPane" layoutX="730.0" layoutY="371.0" prefHeight="113.0" prefWidth="171.0">
       <children>
-         <Button fx:id="incrementButton" layoutX="45.0" layoutY="32.0" mnemonicParsing="false" onAction="#incrementLabel" text="^" />
-         <Button fx:id="decrementButton" layoutX="45.0" layoutY="63.0" mnemonicParsing="false" onAction="#decrementLabel" prefHeight="25.0" prefWidth="25.0" text="v" />
-         <Label fx:id="incrementLabel" layoutX="78.0" layoutY="32.0" prefHeight="57.0" prefWidth="65.0" text="0" textAlignment="CENTER">
+         <Button fx:id="incrementButton" layoutX="37.0" layoutY="35.0" mnemonicParsing="false" onAction="#incrementLabel" text="^" />
+         <Button fx:id="decrementButton" layoutX="37.0" layoutY="66.0" mnemonicParsing="false" onAction="#decrementLabel" prefHeight="25.0" prefWidth="25.0" text="v" />
+         <Label fx:id="incrementLabel" layoutX="70.0" layoutY="35.0" prefHeight="57.0" prefWidth="65.0" text="0" textAlignment="CENTER">
             <font>
                <Font name="Baskerville Old Face" size="23.0" />
             </font>
@@ -24,13 +24,13 @@
          </Label>
       </children>
    </AnchorPane>
-   <ComboBox fx:id="difficultyCmbox" layoutX="787.0" layoutY="284.0" prefHeight="25.0" prefWidth="171.0" promptText="No selection" />
-   <Label fx:id="difficultyLabel" layoutX="787.0" layoutY="259.0" prefHeight="25.0" prefWidth="171.0" text="Choose Difficulty" textAlignment="CENTER" textFill="WHITE">
+   <ComboBox fx:id="difficultyCmbox" layoutX="730.0" layoutY="291.0" prefHeight="25.0" prefWidth="171.0" promptText="No selection" />
+   <Label fx:id="difficultyLabel" layoutX="730.0" layoutY="266.0" prefHeight="25.0" prefWidth="171.0" text="Choose Difficulty" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="System Bold Italic" size="12.0" />
       </font>
    </Label>
-   <Label fx:id="catagoryLabel" layoutX="163.0" layoutY="73.0" prefHeight="25" prefWidth="575.0" text="Choose Category" textAlignment="CENTER" textFill="WHITE">
+   <Label fx:id="catagoryLabel" layoutX="113.0" layoutY="65.0" prefHeight="25" prefWidth="575.0" text="Choose Category" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="System Bold Italic" size="12.0" />
       </font>
