@@ -18,6 +18,7 @@ import quizApp.startQuizScene.StartQuizController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class OptionController implements Initializable {
     @FXML
@@ -27,7 +28,7 @@ public class OptionController implements Initializable {
     private ComboBox<String> difficultyComboBox;
 
     @FXML
-    private ListView categoryList;
+    private ListView<Categories> categoryList;
 
     private UrlRequest urlRequest = new UrlRequest();
 
@@ -52,6 +53,11 @@ public class OptionController implements Initializable {
             if (val < 50) {
                 incrementLabel.setText("" + (val + 1));
             }
+
+            else if(incrementLabel.getText().equals("Num Only")) {
+                incrementLabel.setText("" + 0);
+            }
+
         } catch (NumberFormatException e) {
             incrementLabel.setText("Num Only");
         }
@@ -63,13 +69,16 @@ public class OptionController implements Initializable {
             if (val > 0) {
                 incrementLabel.setText("" + (val - 1));
             }
+            else if(incrementLabel.getText().equals("Num Only")){
+                incrementLabel.setText(""+ 0);
+            }
         } catch (NumberFormatException e) {
             incrementLabel.setText("Num Only");
         }
     }
 
     public Integer getQuestionNum() {
-        return Integer.parseInt(incrementLabel.getText());
+        return Integer.parseInt(incrementLabel.getText().replaceAll("^[0-9]*$", "0"));
     }
 
     public Integer getCategory() {
@@ -88,6 +97,7 @@ public class OptionController implements Initializable {
     }
 
     public void startQuiz(ActionEvent actionEvent) throws Exception {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../startQuizScene/StartQuizScene.fxml"));
         Parent scene = loader.load();
         StartQuizController startQuizController = loader.getController();

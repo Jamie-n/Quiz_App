@@ -2,9 +2,6 @@ package quizApp.quizz;
 
 import org.json.JSONArray;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class TriviaQuestion {
 
     private String category;
@@ -13,19 +10,15 @@ public class TriviaQuestion {
     private String question;
     private String correctAnswer;
     private JSONArray incorrectAnswers;
-    private ArrayList allAnswers;
 
 
-    public TriviaQuestion(String category, String type, String difficulty, String question, String correctAnswer, JSONArray incorrectAnswers, ArrayList allAnswers) {
+    public TriviaQuestion(String category, String type, String difficulty,String question, String correctAnswer, JSONArray incorrectAnswers) {
         this.category = category;
         this.type = type;
         this.difficulty = difficulty;
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
-        this.allAnswers = allAnswers;
-
-        Collections.shuffle(allAnswers);
     }
 
     public TriviaQuestion(String category, String type) {
@@ -59,7 +52,6 @@ public class TriviaQuestion {
 
     public String getQuestion() {
         return question.replaceAll("(&quot;)","'").replaceAll("&#[0-9]*;s","");
-
     }
 
     public void setQuestion(String question) {
@@ -82,7 +74,8 @@ public class TriviaQuestion {
         this.incorrectAnswers = incorrectAnswers;
     }
 
-    public String getAllAnswers(int index) {
-        return allAnswers.get(index).toString();
+    @Override
+    public String toString() {
+        return ""+incorrectAnswers;
     }
 }

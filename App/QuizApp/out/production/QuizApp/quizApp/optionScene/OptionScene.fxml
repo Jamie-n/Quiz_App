@@ -18,7 +18,7 @@
          <TextField fx:id="incrementLabel" layoutX="86.0" layoutY="14.0" prefHeight="54.0" prefWidth="69.0" text="0" />
       </children>
    </AnchorPane>
-   <ComboBox fx:id="difficultyCmbox" layoutX="707.0" layoutY="291.0" prefHeight="26.0" prefWidth="197.0" promptText="No selection" />
+   <ComboBox fx:id="difficultyComboBox" layoutX="707.0" layoutY="291.0" prefHeight="26.0" prefWidth="197.0" promptText="No selection" />
    <Label fx:id="difficultyLabel" layoutX="706.0" layoutY="266.0" prefHeight="25.0" prefWidth="197.0" text="Choose Difficulty" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="System Bold Italic" size="12.0" />

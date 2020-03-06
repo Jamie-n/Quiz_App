@@ -24,7 +24,7 @@ public class UrlRequest {
         StringBuffer responseContent = new StringBuffer();
 
         try {
-            URL url = new URL("https://opentdb.com/api.php?amount="+numberOfQs+"&category="+cat+"&difficulty"+difficultyLevel);
+            URL url = new URL("https://opentdb.com/api.php?amount="+numberOfQs+"&category="+cat+"&difficulty="+difficultyLevel);
 
             responseContent = makeRequest(url);
 
@@ -36,7 +36,6 @@ public class UrlRequest {
 
             for (int i = 0; i < questions.length(); i++) {
 
-                ArrayList<Object> allAnswers = new ArrayList<>();
                 JSONObject question = questions.getJSONObject(i);
                 String category = question.getString("category");
                 String type = question.getString("type");
@@ -44,14 +43,8 @@ public class UrlRequest {
                 String questionAsk = question.getString("question");
                 String correctAnswer = question.getString("correct_answer");
                 JSONArray incorrectAnswers = question.getJSONArray("incorrect_answers");
-                JSONArray answers = question.getJSONArray("incorrect_answers").put(question.getString("correct_answer"));
 
-                for (Object o: answers){
-                    allAnswers.add(o);
-                }
-
-                TriviaQuestion triviaQuestion = new TriviaQuestion(category, type, difficulty, questionAsk, correctAnswer, incorrectAnswers, allAnswers);
-                questionList.add(triviaQuestion);
+                questionList.add(new TriviaQuestion(category, type, difficulty, questionAsk, correctAnswer, incorrectAnswers));
 
             }
 

@@ -5,87 +5,81 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import quizApp.quizz.TriviaQuestion;
-import quizApp.quizz.UrlRequest;
+import quizApp.quizz.QuestionController;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class StartQuizController {
+public class StartQuizController implements Initializable{
     @FXML
-    private Label questionLabel;
+    private Label questionLabel, timerLabel;
 
     @FXML
-    private Label timerLabel;
+    private Button answerButton1, answerButton2, answerButton3, answerButton4;
 
     @FXML
-    private Button answerButton1;
+    private Label totalQuestions, questionCategory, questionDifficulty;
 
-    @FXML
-    private Button answerButton2;
-
-    @FXML
-    private Button answerButton3;
-
-    @FXML
-    private Button answerButton4;
-
-    private Integer totalQuestions;
-    private Integer questionCategory;
-    private String questionDifficulty;
-    private int onQuestion = 0;
     private int quizScore = 0;
-    private ArrayList<TriviaQuestion> triviaQuestions = new ArrayList<>();
+    private QuestionController questionController;
 
-    @FXML
-    public void initialize(){
-        this.triviaQuestions.addAll(new UrlRequest().getQuestions(totalQuestions, questionCategory, questionDifficulty));
-        setQuestionLabel();
+    @Override
+    public void initialize(URL location, ResourceBundle resourceBundle){
+        questionController = new QuestionController();
+        questionController.setQuestions(getTotalQuestions(), getQuestionCategory(), getQuestionDifficulty());
+
         setAnswers();
-
+        setQuestionLabel();
     }
 
     public void finishQuiz(ActionEvent actionEvent){
-        if(onQuestion>=totalQuestions){
-
-        }
     }
 
     public void correctAnswer(ActionEvent actionEvent){
-        quizScore+=10;
+        this.quizScore+=10;
     }
 
     public void incorrectAnswer(ActionEvent actionEvent){
-        quizScore-=4;
+        this.quizScore-=4;
     }
 
     private void setQuestionLabel(){
-        questionLabel.setText(triviaQuestions.get(onQuestion).getQuestion());
+        questionLabel.setText(questionController.getQuestion());
     }
 
     private void goNext(){
-        if (onQuestion<=totalQuestions){
-            onQuestion++;
-        }
     }
 
     private void setAnswers(){
-        answerButton1.setText(triviaQuestions.get(onQuestion).getAllAnswers(0));
-        answerButton2.setText(triviaQuestions.get(onQuestion).getAllAnswers(1));
-        answerButton3.setText(triviaQuestions.get(onQuestion).getAllAnswers(2));
-        answerButton4.setText(triviaQuestions.get(onQuestion).getAllAnswers(3));
+        answerButton1.setText(questionController.getAllAnswers().get(0).toString());
+        answerButton2.setText(questionController.getAllAnswers().get(1).toString());
+        answerButton3.setText(questionController.getAllAnswers().get(2).toString());
+        answerButton4.setText(questionController.getAllAnswers().get(3).toString());
     }
 
-    public void setTotalQuestions(int totalQuestions) {
-        this.totalQuestions = totalQuestions;
+    public void setTotalQuestions(Integer totalQuestions) {
+        this.totalQuestions.setText(String.valueOf(totalQuestions));
     }
 
-    public void setQuestionCategory(int questionCategory) {
-        this.questionCategory = questionCategory;
+    public int getTotalQuestions(){
+        return Integer.parseInt(this.totalQuestions.getText());
+    }
+
+    public void setQuestionCategory(Integer questionCategory) {
+        this.questionCategory.setText(String.valueOf(questionCategory));
+    }
+
+    public int getQuestionCategory(){
+        return Integer.parseInt(this.questionCategory.getText());
     }
 
     public void setQuestionDifficulty(String questionDifficulty) {
-        this.questionDifficulty = questionDifficulty;
+        this.questionDifficulty.setText(questionDifficulty);
     }
+
+    public String getQuestionDifficulty(){
+        return this.questionDifficulty.getText();
+    }
+
+
 }
