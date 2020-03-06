@@ -1,6 +1,5 @@
 package quizApp.optionScene;
 
-import com.sun.tools.corba.se.idl.InterfaceGen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,9 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import quizApp.questionScene.QuestionController;
 import quizApp.quizz.Categories;
 import quizApp.quizz.UrlRequest;
+import quizApp.startQuizScene.StartQuizController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +24,7 @@ public class OptionController implements Initializable {
     private TextField incrementLabel;
 
     @FXML
-    private ComboBox<String> difficultyCmbox;
+    private ComboBox<String> difficultyComboBox;
 
     @FXML
     private ListView categoryList;
@@ -34,7 +33,7 @@ public class OptionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        difficultyCmbox.getItems().addAll("Easy", "Medium", "Hard");
+        difficultyComboBox.getItems().addAll("Easy", "Medium", "Hard");
 
         try {
 
@@ -78,7 +77,7 @@ public class OptionController implements Initializable {
     }
 
     public String getDifficulty() {
-        return difficultyCmbox.getSelectionModel().getSelectedItem();
+        return difficultyComboBox.getSelectionModel().getSelectedItem().toLowerCase();
     }
 
     public void backToMenu(ActionEvent actionEvent) throws Exception {
@@ -89,9 +88,9 @@ public class OptionController implements Initializable {
     }
 
     public void startQuiz(ActionEvent actionEvent) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../questionScene/QuestionScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../startQuizScene/StartQuizScene.fxml"));
         Parent scene = loader.load();
-        QuestionController questionController = loader.getController();
+        StartQuizController startQuizController = loader.getController();
 
         if (getCategory().equals(-1) || getQuestionNum().equals(0) || getDifficulty()==null) {
 
@@ -102,9 +101,9 @@ public class OptionController implements Initializable {
 
         } else {
 
-            questionController.setQuestionCategory(getCategory());
-            questionController.setQuestionDifficulty(getDifficulty());
-            questionController.setTotalQuestions(getQuestionNum());
+            startQuizController.setQuestionCategory(getCategory());
+            startQuizController.setQuestionDifficulty(getDifficulty());
+            startQuizController.setTotalQuestions(getQuestionNum());
 
             Stage thirdStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             thirdStage.setScene(new Scene(scene));
