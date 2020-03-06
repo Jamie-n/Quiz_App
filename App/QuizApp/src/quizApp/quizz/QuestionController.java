@@ -4,41 +4,39 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class QuestionController {
-    private int questions;
+    private int questions = 0; //Increment each time a new question is had
     private ArrayList<TriviaQuestion> triviaQuestions;
-    private ArrayList<String> allAnswers;
-    private UrlRequest urlRequest = new UrlRequest();
+    private ArrayList<String> allAnswers = new ArrayList<>();
 
-    public QuestionController(){
-        this.questions = 0;
-        this.triviaQuestions = new ArrayList<>();
-        this.allAnswers = new ArrayList<>();
-    }
+    public ArrayList<String> setQuestions(ArrayList<TriviaQuestion> triviaQuestionArrayList){
+        allAnswers.clear(); //Purges the array list ready for adding in next set of questions.
 
-    public void setQuestions(int totQuestions, int category, String questionDifficulty){
-        questions = totQuestions-1;
-        this.triviaQuestions.addAll(urlRequest.getQuestions(totQuestions, category, questionDifficulty));
-        for(Object o: getCurrentQuestion().getIncorrectAnswers()){
-            this.allAnswers.add(o.toString());
-        }
-        this.allAnswers.add(getCurrentQuestion().getCorrectAnswer());
+        triviaQuestions = triviaQuestionArrayList;
+        allAnswers.addAll(triviaQuestions.get(questions).getIncorrectAnswers());
+        allAnswers.add(getCurrentQuestion().getCorrectAnswer());
         Collections.shuffle(this.allAnswers);
+
+        return allAnswers;
     }
 
     public ArrayList getAllAnswers(){
         return this.allAnswers;
     }
 
+    public void addToAllAnswers(String answer){
+        allAnswers.add(answer);
+    }
+
     public TriviaQuestion getCurrentQuestion(){
-        return this.triviaQuestions.get(questions);
+        return triviaQuestions.get(questions);
     }
 
     public String getQuestion(){
-        return this.triviaQuestions.get(questions).getQuestion();
+        return triviaQuestions.get(questions).getQuestion();
     }
 
     public void goToNextQuestion(){
-        this.questions--;
+        this.questions++;
     }
 
     public int getQuestions(){

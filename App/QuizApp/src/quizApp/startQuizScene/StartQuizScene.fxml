@@ -16,8 +16,5 @@
       <Button fx:id="answerButton3" layoutX="79.0" layoutY="446.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer3" />
       <Button fx:id="answerButton2" layoutX="519.0" layoutY="305.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer2" />
       <Button fx:id="answerButton4" layoutX="519.0" layoutY="446.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer4" />
-      <Label fx:id="totalQuestions" layoutX="14.0" layoutY="11.0" text="Label" />
-      <Label fx:id="questionCategory" layoutX="14.0" layoutY="32.0" text="Label" />
-      <Label fx:id="questionDifficulty" layoutX="14.0" layoutY="55.0" text="Label" />
    </children>
 </AnchorPane>

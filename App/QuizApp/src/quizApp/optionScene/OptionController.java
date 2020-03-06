@@ -17,6 +17,7 @@ import quizApp.startQuizScene.StartQuizController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -31,6 +32,9 @@ public class OptionController implements Initializable {
     private ListView<Categories> categoryList;
 
     private UrlRequest urlRequest = new UrlRequest();
+
+    private ObservableList<Categories> category;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,9 +56,7 @@ public class OptionController implements Initializable {
             int val = Integer.parseInt(incrementLabel.getText());
             if (val < 50) {
                 incrementLabel.setText("" + (val + 1));
-            }
-
-            else if(incrementLabel.getText().equals("Num Only")) {
+            } else if (incrementLabel.getText().equals("Num Only")) {
                 incrementLabel.setText("" + 0);
             }
 
@@ -68,9 +70,8 @@ public class OptionController implements Initializable {
             int val = Integer.parseInt(incrementLabel.getText());
             if (val > 0) {
                 incrementLabel.setText("" + (val - 1));
-            }
-            else if(incrementLabel.getText().equals("Num Only")){
-                incrementLabel.setText(""+ 0);
+            } else if (incrementLabel.getText().equals("Num Only")) {
+                incrementLabel.setText("" + 0);
             }
         } catch (NumberFormatException e) {
             incrementLabel.setText("Num Only");
@@ -78,11 +79,11 @@ public class OptionController implements Initializable {
     }
 
     public Integer getQuestionNum() {
-        return Integer.parseInt(incrementLabel.getText().replaceAll("^[0-9]*$", "0"));
+        return Integer.parseInt(incrementLabel.getText());
     }
 
     public Integer getCategory() {
-        return categoryList.getSelectionModel().getSelectedIndex();
+        return categoryList.getSelectionModel().getSelectedItem().getCategoryID(); //id not index
     }
 
     public String getDifficulty() {
@@ -102,7 +103,8 @@ public class OptionController implements Initializable {
         Parent scene = loader.load();
         StartQuizController startQuizController = loader.getController();
 
-        if (getCategory().equals(-1) || getQuestionNum().equals(0) || getDifficulty()==null) {
+
+        if (getCategory().equals(-1) || getQuestionNum().equals(0) || getDifficulty() == "") {
 
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please make selections", ButtonType.OK);
             alert.setTitle(null);
@@ -111,9 +113,9 @@ public class OptionController implements Initializable {
 
         } else {
 
-            startQuizController.setQuestionCategory(getCategory());
-            startQuizController.setQuestionDifficulty(getDifficulty());
-            startQuizController.setTotalQuestions(getQuestionNum());
+
+            startQuizController.setParams(getCategory(), getDifficulty(), getQuestionNum()); //Calls the startup for the quiz start controller
+
 
             Stage thirdStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             thirdStage.setScene(new Scene(scene));

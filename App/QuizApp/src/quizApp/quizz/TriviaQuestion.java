@@ -2,6 +2,8 @@ package quizApp.quizz;
 
 import org.json.JSONArray;
 
+import java.util.ArrayList;
+
 public class TriviaQuestion {
 
     private String category;
@@ -9,10 +11,10 @@ public class TriviaQuestion {
     private String difficulty;
     private String question;
     private String correctAnswer;
-    private JSONArray incorrectAnswers;
+    private ArrayList<String> incorrectAnswers;
 
 
-    public TriviaQuestion(String category, String type, String difficulty,String question, String correctAnswer, JSONArray incorrectAnswers) {
+    public TriviaQuestion(String category, String type, String difficulty,String question, String correctAnswer, ArrayList incorrectAnswers) {
         this.category = category;
         this.type = type;
         this.difficulty = difficulty;
@@ -24,6 +26,9 @@ public class TriviaQuestion {
     public TriviaQuestion(String category, String type) {
         this.category = category;
         this.type = type;
+    }
+
+    public TriviaQuestion(String category, String type, String difficulty, String questionAsk, String correctAnswer, JSONArray incorrectAnswers) {
     }
 
     public String getCategory() {
@@ -51,7 +56,7 @@ public class TriviaQuestion {
     }
 
     public String getQuestion() {
-        return question.replaceAll("(&quot;)","'").replaceAll("&#[0-9]*;s","");
+        return question;
     }
 
     public void setQuestion(String question) {
@@ -66,11 +71,11 @@ public class TriviaQuestion {
         this.correctAnswer = correctAnswer;
     }
 
-    public JSONArray getIncorrectAnswers() {
+    public ArrayList<String> getIncorrectAnswers() {
         return incorrectAnswers;
     }
 
-    public void setIncorrectAnswers(JSONArray incorrectAnswers) {
+    public void setIncorrectAnswers(ArrayList incorrectAnswers) {
         this.incorrectAnswers = incorrectAnswers;
     }
 
