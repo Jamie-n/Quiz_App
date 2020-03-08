@@ -96,16 +96,16 @@ public class StartQuizController implements Initializable {
         answerButton4.setVisible(true);
 
         if(allAns.size() == 2){ //If there is a True/False Answer
-            answerButton1.setText(allAns.get(0));
-            answerButton2.setText(allAns.get(1));
+            answerButton1.setText(questionController.getAllAnswers().get(0));
+            answerButton2.setText(questionController.getAllAnswers().get(1));
             answerButton3.setVisible(false);
             answerButton4.setVisible(false);
         }
         else {
-            answerButton1.setText(allAns.get(0)); //Multi choice answer
-            answerButton2.setText(allAns.get(1));
-            answerButton3.setText(allAns.get(2));
-            answerButton4.setText(allAns.get(3));
+            answerButton1.setText(questionController.getAllAnswers().get(0)); //Multi choice answer
+            answerButton2.setText(questionController.getAllAnswers().get(1));
+            answerButton3.setText(questionController.getAllAnswers().get(2));
+            answerButton4.setText(questionController.getAllAnswers().get(3));
         }
     }
 
