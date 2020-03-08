@@ -78,9 +78,4 @@ public class TriviaQuestion {
     public void setIncorrectAnswers(ArrayList incorrectAnswers) {
         this.incorrectAnswers = incorrectAnswers;
     }
-
-    @Override
-    public String toString() {
-        return ""+incorrectAnswers;
-    }
 }

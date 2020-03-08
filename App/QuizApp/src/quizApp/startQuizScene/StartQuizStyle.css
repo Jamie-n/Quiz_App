@@ -10,7 +10,7 @@
 }
 
 .button, .button:pressed{
-    -fx-font:bold 10pt "Arial";
+    -fx-font:bold 20pt "Arial";
     -fx-text-fill: white;
     -fx-background-color: #537a7b;
     -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.7), 10,0,0,0);
@@ -21,7 +21,8 @@
 }
 
 #questionLabel{
-    -fx-text-fill: white;
+    -fx-font:bold 20px "Arial";
+    -fx-text-fill: black;
     -fx-alignment: center;
     -fx-background-color: rgba(15, 30, 31, 0.53);
 }

@@ -79,11 +79,15 @@ public class OptionController implements Initializable {
     }
 
     public Integer getQuestionNum() {
-        return Integer.parseInt(incrementLabel.getText());
+        return Integer.parseInt(incrementLabel.getText())+3;
     }
 
     public Integer getCategory() {
-        return categoryList.getSelectionModel().getSelectedItem().getCategoryID(); //id not index
+        try {
+            return categoryList.getSelectionModel().getSelectedItem().getCategoryID(); //id not index
+        }catch (Exception e){
+            return null;
+        }
     }
 
     public String getDifficulty() {
@@ -104,7 +108,7 @@ public class OptionController implements Initializable {
         StartQuizController startQuizController = loader.getController();
 
 
-        if (getCategory().equals(-1) || getQuestionNum().equals(0) || getDifficulty() == "") {
+        if (getCategory()==null || getQuestionNum().equals(0) || getDifficulty() == "") {
 
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please make selections", ButtonType.OK);
             alert.setTitle(null);

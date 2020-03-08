@@ -6,15 +6,21 @@
 
 <AnchorPane prefHeight="640" prefWidth="1024" stylesheets="@StartQuizStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.startQuizScene.StartQuizController">
    <children>
-      <Label fx:id="questionLabel" layoutX="79.0" layoutY="68.0" prefHeight="160.0" prefWidth="866.0" text="Question">
+      <Label fx:id="timerLabel" layoutX="844.0" layoutY="6.0" prefHeight="26.0" prefWidth="93.0" text="timer" />
+      <Button fx:id="answerButton1" layoutX="79.0" layoutY="305.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer1" />
+      <Button fx:id="answerButton3" layoutX="79.0" layoutY="446.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer3" />
+      <Button fx:id="answerButton2" layoutX="519.0" layoutY="305.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer2" />
+      <Button fx:id="answerButton4" layoutX="519.0" layoutY="446.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer4" />
+      <TextArea fx:id="questionLabel" disable="true" layoutX="79.0" layoutY="78.0" prefHeight="160.0" prefWidth="866.0" text="Question" wrapText="true" />
+      <Label fx:id="onQuestion" layoutX="14.0" layoutY="6.0" text="Question No.1" textFill="#7dffc7">
          <font>
-            <Font size="30.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="timerLabel" layoutX="844.0" layoutY="6.0" prefHeight="26.0" prefWidth="93.0" text="timer" />
-      <Button fx:id="answerButton1" layoutX="79.0" layoutY="305.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer1" />
-      <Button fx:id="answerButton3" layoutX="79.0" layoutY="446.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer3" />
-      <Button fx:id="answerButton2" layoutX="519.0" layoutY="305.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer2" />
-      <Button fx:id="answerButton4" layoutX="519.0" layoutY="446.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="427.0" text="answer4" />
+      <Label fx:id="scoreLabel" layoutX="257.0" layoutY="9.0" text="Total Score" textFill="#007552">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -8,7 +8,7 @@ public class QuestionController {
     private ArrayList<TriviaQuestion> triviaQuestions;
     private ArrayList<String> allAnswers = new ArrayList<>();
 
-    public ArrayList<String> setQuestions(ArrayList<TriviaQuestion> triviaQuestionArrayList){
+    public ArrayList<String> setQuestion(ArrayList<TriviaQuestion> triviaQuestionArrayList){
         allAnswers.clear(); //Purges the array list ready for adding in next set of questions.
 
         triviaQuestions = triviaQuestionArrayList;
@@ -32,16 +32,21 @@ public class QuestionController {
     }
 
     public String getQuestion(){
-        return triviaQuestions.get(questions).getQuestion();
+        return triviaQuestions.get(questions).getQuestion().replaceAll("(&quot;)", "'")
+                .replaceAll("n&#[0-9]*;","");
     }
 
     public void goToNextQuestion(){
         this.questions++;
     }
 
-    public int getQuestions(){
-        return this.questions;
+    public String getCorrectAnswer(){
+        return this.getCurrentQuestion().getCorrectAnswer().replaceAll("(&quot;)", "'")
+                .replaceAll("n&#[0-9]*;","");
     }
 
+    public int getOnQuestion(){
+        return this.questions;
+    }
 
 }
