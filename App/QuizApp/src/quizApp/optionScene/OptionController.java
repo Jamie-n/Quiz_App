@@ -79,7 +79,7 @@ public class OptionController implements Initializable {
     }
 
     public Integer getQuestionNum() {
-        return Integer.parseInt(incrementLabel.getText())+3;
+        return Integer.parseInt(incrementLabel.getText());
     }
 
     public Integer getCategory() {
@@ -117,9 +117,7 @@ public class OptionController implements Initializable {
 
         } else {
 
-
             startQuizController.setParams(getCategory(), getDifficulty(), getQuestionNum()); //Calls the startup for the quiz start controller
-
 
             Stage thirdStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             thirdStage.setScene(new Scene(scene));

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="640" prefWidth="1024" stylesheets="@ResultStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.resultScene.ResultController">
+   <children>
+      <Button fx:id="exitButton" layoutX="201.0" layoutY="520.0" mnemonicParsing="false" onAction="#exitQuiz" prefHeight="72" prefWidth="290" text="Exit" />
+      <Button fx:id="restartQuiz" layoutX="534.0" layoutY="520.0" mnemonicParsing="false" onAction="#returnToOptionScene" prefHeight="72.0" prefWidth="290.0" text="Another Quiz" />
+      <Label fx:id="overallScoreLabel" layoutX="107.0" layoutY="132.0" prefHeight="28.0" prefWidth="232.0" text="Overall Score" textFill="WHITE" />
+      <Label fx:id="chosenCategoryLabel" layoutX="89.0" layoutY="50.0" prefHeight="28.0" prefWidth="837.0" text="Chosen Category" textFill="WHITE" />
+      <Label fx:id="totalQuestionsLabel" layoutX="107.0" layoutY="94.0" prefHeight="28.0" prefWidth="232.0" text="Total Questions" textFill="WHITE" />
+      <Label fx:id="gradeLabel" layoutX="355.0" layoutY="94.0" prefHeight="389.0" prefWidth="553.0" text="grade" />
+   </children>
+</AnchorPane>

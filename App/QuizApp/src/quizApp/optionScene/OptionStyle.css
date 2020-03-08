@@ -25,7 +25,6 @@
 }
 
 /* mini Buttons*/
-
 .button, .button:pressed{
     -fx-font:bold 10pt "Arial";
     -fx-text-fill: white;

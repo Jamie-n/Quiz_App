@@ -2,31 +2,34 @@ package quizApp.startQuizScene;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import quizApp.quizz.QuestionController;
 import quizApp.quizz.TriviaQuestion;
 import quizApp.quizz.UrlRequest;
+import quizApp.resultScene.ResultController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class StartQuizController implements Initializable {
     @FXML
     private Label timerLabel, onQuestion, scoreLabel, questionLabel;
 
     @FXML
-    private Button answerButton1, answerButton2, answerButton3, answerButton4;
+    private Button answerButton1, answerButton2, answerButton3, answerButton4, finishButton;
 
-    private int totalQuestion;
-    private int questionCat;
+    private int questionCat, totalQuestion, correctQuestions, quizScore = 0;;
     private String quesDiff;
     private ArrayList<String> allAns = new ArrayList<>();
-
-    private int quizScore = 0;
     private QuestionController questionController = new QuestionController();
     public ArrayList<TriviaQuestion> questionsArrayList = new ArrayList<TriviaQuestion>();
 
@@ -48,6 +51,8 @@ public class StartQuizController implements Initializable {
         setQuestionLabel();
 
         quizScore = 0;
+
+        finishButton.setVisible(false);
     }
 
     public void finishQuiz(ActionEvent actionEvent) {
@@ -58,19 +63,20 @@ public class StartQuizController implements Initializable {
     }
 
     public void checkAnswer(ActionEvent actionEvent) {
+
+        String text = ((Button) actionEvent.getSource()).getText();
+        System.out.println(text);
+        if (questionController.getCorrectAnswer().equals(text)) {
+
+            this.quizScore += 10;
+            this.correctQuestions++;
+
+        } else {
+
+            this.quizScore -= 4;
+
+        }
         try {
-            String text = ((Button) actionEvent.getSource()).getText();
-            System.out.println(text);
-            if (questionController.getCorrectAnswer().equals(text)) {
-
-                this.quizScore += 10;
-
-            } else {
-
-                this.quizScore -= 4;
-
-            }
-
             questionController.goToNextQuestion();
             System.out.println(questionController.getAllAnswers());
             initialiseAnswers();
@@ -80,8 +86,22 @@ public class StartQuizController implements Initializable {
             setOnQuestionNumber();
 
         } catch (IndexOutOfBoundsException e) {
-
+            finishButton.setVisible(true);
         }
+    }
+
+    public void resultScene(ActionEvent actionEvent) throws Exception{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resultScene/ResultScene.fxml"));
+        Parent scene = loader.load();
+
+        ResultController resultController = loader.getController();
+
+        resultController.setParams(getTotalQuestions(), getCorrectQuestions(), getQuizScore(), questionController.getCategory());
+
+        Stage thirdStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        thirdStage.setScene(new Scene(scene));
+        thirdStage.show();
     }
 
     private void setQuestionLabel() {
@@ -139,5 +159,35 @@ public class StartQuizController implements Initializable {
         return this.quesDiff;
     }
 
+    public int getQuestionCat() {
+        return questionCat;
+    }
 
+    public void setQuestionCat(int questionCat) {
+        this.questionCat = questionCat;
+    }
+
+    public int getTotalQuestion() {
+        return totalQuestion;
+    }
+
+    public void setTotalQuestion(int totalQuestion) {
+        this.totalQuestion = totalQuestion;
+    }
+
+    public int getCorrectQuestions() {
+        return correctQuestions;
+    }
+
+    public void setCorrectQuestions(int correctQuestions) {
+        this.correctQuestions = correctQuestions;
+    }
+
+    public int getQuizScore() {
+        return quizScore;
+    }
+
+    public void setQuizScore(int quizScore) {
+        this.quizScore = quizScore;
+    }
 }

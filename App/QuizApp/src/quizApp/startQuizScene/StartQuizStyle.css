@@ -29,3 +29,8 @@
     -fx-text-fill: white;
     -fx-alignment: center;
 }
+
+#finishButton{
+    -fx-text-fill: #fffd65;
+    -fx-background-color: #ff7241;
+}

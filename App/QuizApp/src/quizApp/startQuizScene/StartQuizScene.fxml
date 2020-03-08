@@ -25,5 +25,6 @@
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Label>
+      <Button fx:id="finishButton" layoutX="822.0" layoutY="214.0" mnemonicParsing="false" onAction="#resultScene" text="Finish" />
    </children>
 </AnchorPane>

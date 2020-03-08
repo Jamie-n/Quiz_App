@@ -47,4 +47,8 @@ public class QuestionController {
         return this.questions;
     }
 
+    public String getCategory(){
+        return triviaQuestions.get(0).getCategory();
+    }
+
 }
