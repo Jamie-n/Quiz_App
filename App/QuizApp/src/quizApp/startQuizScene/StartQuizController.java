@@ -16,10 +16,7 @@ import java.util.ResourceBundle;
 
 public class StartQuizController implements Initializable {
     @FXML
-    private Label timerLabel, onQuestion, scoreLabel;
-
-    @FXML
-    private TextArea questionLabel;
+    private Label timerLabel, onQuestion, scoreLabel, questionLabel;
 
     @FXML
     private Button answerButton1, answerButton2, answerButton3, answerButton4;
@@ -45,7 +42,7 @@ public class StartQuizController implements Initializable {
         UrlRequest getQs = new UrlRequest(); //Makes the URL request based on chosen categories
         questionsArrayList = getQs.getQuestions(totalQuestion,questionCat,questionDiff);
 
-        allAns = questionController.setQuestion(questionsArrayList);
+        initialiseAnswers();
 
         setAnswers();
         setQuestionLabel();
@@ -56,9 +53,14 @@ public class StartQuizController implements Initializable {
     public void finishQuiz(ActionEvent actionEvent) {
     }
 
+    public void initialiseAnswers(){
+        allAns.addAll(questionController.setQuestion(questionsArrayList));
+    }
+
     public void checkAnswer(ActionEvent actionEvent) {
         try {
             String text = ((Button) actionEvent.getSource()).getText();
+            System.out.println(text);
             if (questionController.getCorrectAnswer().equals(text)) {
 
                 this.quizScore += 10;
@@ -70,16 +72,16 @@ public class StartQuizController implements Initializable {
             }
 
             questionController.goToNextQuestion();
-            System.out.println(questionsArrayList.get(0).getQuestion());
-            questionController.getQuestion();
+            System.out.println(questionController.getAllAnswers());
+            initialiseAnswers();
             setAnswers();
             setScoreLabel();
             setQuestionLabel();
             setOnQuestionNumber();
+
         } catch (IndexOutOfBoundsException e) {
 
         }
-
     }
 
     private void setQuestionLabel() {
@@ -92,16 +94,15 @@ public class StartQuizController implements Initializable {
 
     public void setAnswers() {
 
-        answerButton3.setVisible(true);
-        answerButton4.setVisible(true);
-
-        if(allAns.size() == 2){ //If there is a True/False Answer
+        if(questionController.getAllAnswers().size() == 2){ //If there is a True/False Answer
             answerButton1.setText(questionController.getAllAnswers().get(0));
             answerButton2.setText(questionController.getAllAnswers().get(1));
             answerButton3.setVisible(false);
             answerButton4.setVisible(false);
         }
         else {
+            answerButton3.setVisible(true);
+            answerButton4.setVisible(true);
             answerButton1.setText(questionController.getAllAnswers().get(0)); //Multi choice answer
             answerButton2.setText(questionController.getAllAnswers().get(1));
             answerButton3.setText(questionController.getAllAnswers().get(2));

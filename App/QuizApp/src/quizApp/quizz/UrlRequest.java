@@ -1,5 +1,6 @@
 package quizApp.quizz;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -41,15 +42,15 @@ public class UrlRequest {
                 String category = question.getString("category");
                 String type = question.getString("type");
                 String difficulty = question.getString("difficulty");
-                String questionAsk = question.getString("question");
-                String correctAnswer = question.getString("correct_answer");
+                String questionAsk = StringEscapeUtils.unescapeHtml4(question.getString("question"));
+                String correctAnswer = StringEscapeUtils.unescapeHtml4(question.getString("correct_answer"));
                 JSONArray tempIncorrect = question.getJSONArray("incorrect_answers");
 
                 ArrayList<String> incorrectAnswers = new ArrayList<>();
 
                 if(tempIncorrect != null){
-                    for(int e=0;i<tempIncorrect.length();i++){
-                        incorrectAnswers.add(tempIncorrect.getString(i));
+                    for(int e = 0; e < tempIncorrect.length() ; e ++){
+                        incorrectAnswers.add(StringEscapeUtils.unescapeHtml4(tempIncorrect.getString(e)));
                     }
                 }
 

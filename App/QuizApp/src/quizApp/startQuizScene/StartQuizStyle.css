@@ -3,8 +3,6 @@
     -fx-background-size: 1024px, 640px;
 }
 
-
-
 .button:hover{
     -fx-background-color: #8cc5c6;
 }
@@ -21,8 +19,8 @@
 }
 
 #questionLabel{
-    -fx-font:bold 20px "Arial";
-    -fx-text-fill: black;
+    -fx-font:bold 30px "Arial";
+    -fx-text-fill: white;
     -fx-alignment: center;
     -fx-background-color: rgba(15, 30, 31, 0.53);
 }

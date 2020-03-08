@@ -12,14 +12,14 @@ public class QuestionController {
         allAnswers.clear(); //Purges the array list ready for adding in next set of questions.
 
         triviaQuestions = triviaQuestionArrayList;
-        allAnswers.addAll(triviaQuestions.get(questions).getIncorrectAnswers());
+        allAnswers.addAll(getCurrentQuestion().getIncorrectAnswers());
         allAnswers.add(getCurrentQuestion().getCorrectAnswer());
         Collections.shuffle(this.allAnswers);
 
         return allAnswers;
     }
 
-    public ArrayList getAllAnswers(){
+    public ArrayList<String> getAllAnswers(){
         return this.allAnswers;
     }
 
@@ -32,8 +32,7 @@ public class QuestionController {
     }
 
     public String getQuestion(){
-        return triviaQuestions.get(questions).getQuestion().replaceAll("(&quot;)", "'")
-                .replaceAll("n&#[0-9]*;","");
+        return triviaQuestions.get(questions).getQuestion();
     }
 
     public void goToNextQuestion(){
@@ -41,8 +40,7 @@ public class QuestionController {
     }
 
     public String getCorrectAnswer(){
-        return this.getCurrentQuestion().getCorrectAnswer().replaceAll("(&quot;)", "'")
-                .replaceAll("n&#[0-9]*;","");
+        return this.getCurrentQuestion().getCorrectAnswer();
     }
 
     public int getOnQuestion(){
