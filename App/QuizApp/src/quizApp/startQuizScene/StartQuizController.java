@@ -3,7 +3,6 @@ package quizApp.startQuizScene;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,14 +17,10 @@ import quizApp.quizz.TriviaQuestion;
 import quizApp.quizz.UrlRequest;
 import quizApp.resultScene.ResultController;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.function.Predicate;
 
 public class StartQuizController implements Initializable {
     @FXML
@@ -38,7 +33,7 @@ public class StartQuizController implements Initializable {
     private String quesDiff;
     private ArrayList<String> allAns = new ArrayList<>();
     private QuestionController questionController = new QuestionController();
-    public ArrayList<TriviaQuestion> questionsArrayList = new ArrayList<TriviaQuestion>();
+    public ArrayList<TriviaQuestion> questionsArrayList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle) {
@@ -61,9 +56,6 @@ public class StartQuizController implements Initializable {
 
         finishButton.setVisible(false);
         startTimer();
-    }
-
-    public void finishQuiz(ActionEvent actionEvent) {
     }
 
     public void initialiseAnswers() {
@@ -104,27 +96,24 @@ public class StartQuizController implements Initializable {
         DecimalFormat df = new DecimalFormat("00");
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                countdownSeconds--;
-                timerLabel.setText(df.format(countdownSeconds) + "s");
-                if (countdownSeconds == 0) {
-                    try {
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
+            countdownSeconds--;
+            timerLabel.setText(df.format(countdownSeconds) + "s");
+            if (countdownSeconds == 0) {
+                try {
 
-                        quizScore -= 4;
-                        questionController.goToNextQuestion();
-                        initialiseAnswers();
-                        setAnswers();
-                        setQuestionLabel();
-                        setOnQuestionNumber();
-                        setScoreLabel();
-                        countdownSeconds = 45;
+                    quizScore -= 4;
+                    questionController.goToNextQuestion();
+                    initialiseAnswers();
+                    setAnswers();
+                    setQuestionLabel();
+                    setOnQuestionNumber();
+                    setScoreLabel();
+                    countdownSeconds = 45;
 
-                    } catch (IndexOutOfBoundsException e) {
-                        finishButton.setVisible(true);
-                        time.stop();
-                    }
+                } catch (IndexOutOfBoundsException e) {
+                    finishButton.setVisible(true);
+                    time.stop();
                 }
             }
         });
