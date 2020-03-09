@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import quizApp.quizz.QuestionController;
@@ -29,7 +30,8 @@ public class StartQuizController implements Initializable {
     @FXML
     private Button answerButton1, answerButton2, answerButton3, answerButton4, finishButton;
 
-    private int questionCat, totalQuestion, correctQuestions, quizScore = 0, countdownSeconds = 45;
+    private int questionCat, totalQuestion, correctQuestions, quizScore = 0, countdownSeconds;
+    private final int countdownMaxSecs = 25;
     private String quesDiff;
     private ArrayList<String> allAns = new ArrayList<>();
     private QuestionController questionController = new QuestionController();
@@ -53,6 +55,7 @@ public class StartQuizController implements Initializable {
         setQuestionLabel();
 
         quizScore = 0;
+        countdownSeconds = countdownMaxSecs;
 
         finishButton.setVisible(false);
         startTimer();
@@ -84,7 +87,7 @@ public class StartQuizController implements Initializable {
             this.setAnswers();
             this.setQuestionLabel();
             this.setOnQuestionNumber();
-            countdownSeconds = 45;
+            countdownSeconds = countdownMaxSecs;
 
 
         } catch (IndexOutOfBoundsException e) {
@@ -109,12 +112,18 @@ public class StartQuizController implements Initializable {
                     setQuestionLabel();
                     setOnQuestionNumber();
                     setScoreLabel();
-                    countdownSeconds = 45;
+                    countdownSeconds = countdownMaxSecs;
 
                 } catch (IndexOutOfBoundsException e) {
                     finishButton.setVisible(true);
                     time.stop();
                 }
+            }
+            else if(countdownSeconds <= 10){
+                timerLabel.setTextFill(Color.web("#FF6347"));
+            }
+            else{
+                timerLabel.setTextFill(Color.web("#FFFFFF"));
             }
         });
         time.getKeyFrames().add(frame);

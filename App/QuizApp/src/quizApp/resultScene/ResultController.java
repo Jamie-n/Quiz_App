@@ -104,23 +104,24 @@ public class ResultController {
 
     public String calcGrade(int score){
         int totalScore = totalQuestions*10;
-        if (score<totalScore*0.10){
-            return "F";
+
+        if(score>totalScore*0.85){
+            return "S";
         }
-        else if(score<totalScore*0.35){
-            return "D";
-        }
-        else if(score<totalScore*0.40){
-            return "C";
-        }
-        else if(score<totalScore*0.55){
-            return "B";
-        }
-        else if(score<totalScore*0.75){
+        else if (score>totalScore*0.75){
             return "A";
         }
+        else if(score>totalScore*0.55){
+            return "B";
+        }
+        else if(score>totalScore*0.40){
+            return "C";
+        }
+        else if(score>totalScore*0.35){
+            return "D";
+        }
         else {
-            return "S";
+            return "F";
         }
     }
 
