@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/QuizApp/out/test/QuizApp"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="org.json:json:20190722" value="project"/>
+		<level name="lib" value="project"/>
+		<level name="org.apache.commons:commons-lang3:3.3.2" value="project"/>
+	</levels>
+</component>
