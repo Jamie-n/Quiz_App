@@ -1,6 +1,9 @@
 package quizApp.startQuizScene;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import quizApp.quizz.QuestionController;
 import quizApp.quizz.TriviaQuestion;
 import quizApp.quizz.UrlRequest;
@@ -16,8 +20,11 @@ import quizApp.resultScene.ResultController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.function.Predicate;
 
 public class StartQuizController implements Initializable {
@@ -27,7 +34,7 @@ public class StartQuizController implements Initializable {
     @FXML
     private Button answerButton1, answerButton2, answerButton3, answerButton4, finishButton;
 
-    private int questionCat, totalQuestion, correctQuestions, quizScore = 0;;
+    private int questionCat, totalQuestion, correctQuestions, quizScore = 0, countdownSeconds = 45;
     private String quesDiff;
     private ArrayList<String> allAns = new ArrayList<>();
     private QuestionController questionController = new QuestionController();
@@ -37,13 +44,13 @@ public class StartQuizController implements Initializable {
     public void initialize(URL location, ResourceBundle resourceBundle) {
     }
 
-    public void setParams(Integer questionCat, String questionDiff, Integer totalQuestion){
+    public void setParams(Integer questionCat, String questionDiff, Integer totalQuestion) {
         this.setQuestionDifficulty(questionDiff);
         this.setQuestionCategory(questionCat);
         this.setTotalQuestions(totalQuestion);
 
         UrlRequest getQs = new UrlRequest(); //Makes the URL request based on chosen categories
-        questionsArrayList = getQs.getQuestions(totalQuestion,questionCat,questionDiff);
+        questionsArrayList = getQs.getQuestions(totalQuestion, questionCat, questionDiff);
 
         initialiseAnswers();
 
@@ -53,12 +60,13 @@ public class StartQuizController implements Initializable {
         quizScore = 0;
 
         finishButton.setVisible(false);
+        startTimer();
     }
 
     public void finishQuiz(ActionEvent actionEvent) {
     }
 
-    public void initialiseAnswers(){
+    public void initialiseAnswers() {
         allAns.addAll(questionController.setQuestion(questionsArrayList));
     }
 
@@ -76,21 +84,55 @@ public class StartQuizController implements Initializable {
             this.quizScore -= 4;
 
         }
+        setScoreLabel();
         try {
             questionController.goToNextQuestion();
             System.out.println(questionController.getAllAnswers());
-            initialiseAnswers();
-            setAnswers();
-            setScoreLabel();
-            setQuestionLabel();
-            setOnQuestionNumber();
+            this.initialiseAnswers();
+            this.setAnswers();
+            this.setQuestionLabel();
+            this.setOnQuestionNumber();
+            countdownSeconds = 45;
+
 
         } catch (IndexOutOfBoundsException e) {
             finishButton.setVisible(true);
         }
     }
 
-    public void resultScene(ActionEvent actionEvent) throws Exception{
+    public void startTimer() {
+        DecimalFormat df = new DecimalFormat("00");
+        Timeline time = new Timeline();
+        time.setCycleCount(Timeline.INDEFINITE);
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                countdownSeconds--;
+                timerLabel.setText(df.format(countdownSeconds) + "s");
+                if (countdownSeconds == 0) {
+                    try {
+
+                        quizScore -= 4;
+                        questionController.goToNextQuestion();
+                        initialiseAnswers();
+                        setAnswers();
+                        setQuestionLabel();
+                        setOnQuestionNumber();
+                        setScoreLabel();
+                        countdownSeconds = 45;
+
+                    } catch (IndexOutOfBoundsException e) {
+                        finishButton.setVisible(true);
+                        time.stop();
+                    }
+                }
+            }
+        });
+        time.getKeyFrames().add(frame);
+        time.playFromStart();
+    }
+
+    public void resultScene(ActionEvent actionEvent) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../resultScene/ResultScene.fxml"));
         Parent scene = loader.load();
@@ -104,23 +146,14 @@ public class StartQuizController implements Initializable {
         thirdStage.show();
     }
 
-    private void setQuestionLabel() {
-        questionLabel.setText(questionController.getQuestion());
-    }
-
-    private void setOnQuestionNumber(){
-        onQuestion.setText("Question No."+(questionController.getOnQuestion()+1));
-    }
-
     public void setAnswers() {
 
-        if(questionController.getAllAnswers().size() == 2){ //If there is a True/False Answer
+        if (questionController.getAllAnswers().size() == 2) { //If there is a True/False Answer
             answerButton1.setText(questionController.getAllAnswers().get(0));
             answerButton2.setText(questionController.getAllAnswers().get(1));
             answerButton3.setVisible(false);
             answerButton4.setVisible(false);
-        }
-        else {
+        } else {
             answerButton3.setVisible(true);
             answerButton4.setVisible(true);
             answerButton1.setText(questionController.getAllAnswers().get(0)); //Multi choice answer
@@ -130,8 +163,16 @@ public class StartQuizController implements Initializable {
         }
     }
 
-    public void setScoreLabel(){
-        scoreLabel.setText("Total Score: "+quizScore);
+    private void setOnQuestionNumber() {
+        onQuestion.setText("Question No." + (questionController.getOnQuestion() + 1));
+    }
+
+    private void setQuestionLabel() {
+        questionLabel.setText(questionController.getQuestion());
+    }
+
+    public void setScoreLabel() {
+        scoreLabel.setText("Total Score: " + quizScore);
     }
 
     public void setTotalQuestions(Integer totalQuestions) {
@@ -190,4 +231,13 @@ public class StartQuizController implements Initializable {
     public void setQuizScore(int quizScore) {
         this.quizScore = quizScore;
     }
+
+    public int getCountdownSeconds() {
+        return countdownSeconds;
+    }
+
+    public void setCountdownSeconds(int countdownSeconds) {
+        this.countdownSeconds = countdownSeconds;
+    }
+
 }
