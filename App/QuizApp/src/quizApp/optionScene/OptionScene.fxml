@@ -31,7 +31,7 @@
    </Label>
    <Label fx:id="maxLabel" layoutX="707.0" layoutY="378.0" prefHeight="25.0" prefWidth="197.0" text="Number of Questions (Max 50)" textFill="WHITE">
       <font>
-         <Font name="System Bold Italic" size="12.0" />
+         <Font name="System Bold Italic" size="10.0" />
       </font>
    </Label>
 </AnchorPane>

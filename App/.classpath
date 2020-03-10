@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="QuizApp/src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/org.json:json:20190722"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/org.apache.commons:commons-lang3:3.3.2"/>
-	<classpathentry kind="output" path="QuizApp/out/production/QuizApp"/>
-</classpath>

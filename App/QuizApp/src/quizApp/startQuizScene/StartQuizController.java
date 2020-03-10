@@ -73,11 +73,6 @@ public class StartQuizController implements Initializable {
 
             this.quizScore += 10;
             this.correctQuestions++;
-
-        } else {
-
-            this.quizScore -= 4;
-
         }
         setScoreLabel();
         try {
