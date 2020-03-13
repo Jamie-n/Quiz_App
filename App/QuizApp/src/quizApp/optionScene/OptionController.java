@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class OptionController implements Initializable {
+public class  OptionController implements Initializable {
     @FXML
     private TextField incrementLabel;
 
