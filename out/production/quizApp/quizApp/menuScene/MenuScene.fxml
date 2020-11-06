@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane  prefHeight="640" prefWidth="1024" stylesheets="@MenuStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.menuScene.MainMenuController">
+   <Button fx:id="quizzesButton" layoutX="365.0" layoutY="435.0" mnemonicParsing="false" onAction="#nextScene" prefHeight="72" prefWidth="290" text="Select Quiz" />
+   <Button fx:id="exitButton" layoutX="365.0" layoutY="520.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="72" prefWidth="290" text="Quit" />
+</AnchorPane>

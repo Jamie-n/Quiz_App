@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="640" prefWidth="1024" stylesheets="@StartQuizStyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizApp.startQuizScene.StartQuizController">
+   <children>
+      <Label fx:id="timerLabel" layoutX="844.0" layoutY="6.0" prefHeight="26.0" prefWidth="93.0" text="25s" textFill="#d2ffca">
+         <font>
+            <Font name="Arial Bold Italic" size="23.0" />
+         </font></Label>
+      <Button fx:id="answerButton1" layoutX="79.0" layoutY="305.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer1" wrapText="true" />
+      <Button fx:id="answerButton3" layoutX="79.0" layoutY="446.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer3" wrapText="true" />
+      <Button fx:id="answerButton2" layoutX="519.0" layoutY="305.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer2" wrapText="true" />
+      <Button fx:id="answerButton4" layoutX="519.0" layoutY="446.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="125.0" prefWidth="427.0" text="answer4" wrapText="true" />
+      <Label fx:id="onQuestion" layoutX="46.0" layoutY="6.0" prefHeight="27.0" prefWidth="159.0" text="Question No.1" textFill="#7dffc7">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLabel" layoutX="257.0" layoutY="9.0" text="Total Score: 0" textFill="#007552">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="questionLabel" layoutX="79.0" layoutY="74.0" prefHeight="200.0" prefWidth="868.0" text="question" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <Button fx:id="finishButton" layoutX="754.0" layoutY="213.0" mnemonicParsing="false" onAction="#resultScene" prefHeight="48.0" prefWidth="181.0" text="Results" />
+   </children>
+</AnchorPane>
