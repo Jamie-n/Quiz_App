@@ -1,6 +1,14 @@
-package quizApp.quizz;
+package quizApp.API;
+
+/**
+ * Helper class to build each category
+ *
+ * @author Jamie N
+ *
+ */
 
 public class Categories {
+
 
     private String category;
     private int categoryID;

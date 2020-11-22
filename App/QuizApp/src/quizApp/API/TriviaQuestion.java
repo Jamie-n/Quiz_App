@@ -1,8 +1,17 @@
-package quizApp.quizz;
+package quizApp.API;
 
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+
+
+/**
+ *
+ * Helper class to build each question
+ *
+ * @author Jamie N
+ *
+ */
 
 public class TriviaQuestion {
 

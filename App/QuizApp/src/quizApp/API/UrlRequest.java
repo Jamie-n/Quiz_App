@@ -1,4 +1,4 @@
-package quizApp.quizz;
+package quizApp.API;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
@@ -12,9 +12,27 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * A helper utility to pull trivia questions from the API
+ *
+ *
+ *
+ * @author Jamie N
+ *
+ */
+
 public class UrlRequest {
 
     private static HttpURLConnection connection;
+
+    /**
+     * Pulls the questions directly from the API
+     *
+     * @param numberOfQs Number of questions to pull
+     * @param cat The category ID of the question
+     * @param difficultyLevel The level of difficulty of the questions
+     * @return an arrayList of TrivaQuestion
+     */
 
 
     public ArrayList<TriviaQuestion> getQuestions(int numberOfQs,int cat, String difficultyLevel) {
@@ -66,6 +84,14 @@ public class UrlRequest {
         return null;
     }
 
+    /**
+     *
+     * Pulls a category ID list from the API
+     *
+     * @return An array of Category objects
+     * @throws IOException if a connection could not be established
+     */
+
     public ArrayList<Categories> getCategories() throws IOException {
         URL url = new URL("https://opentdb.com/api_category.php");
         StringBuffer responseContent = new StringBuffer();
@@ -86,6 +112,15 @@ public class UrlRequest {
         }
         return categoriesArrayList;
     }
+
+    /**
+     * Makes the request to the API
+     *
+     * @param url the URL to make the request to
+     * @return the response from the server
+     * @throws IOException if connection could not be established
+     *
+     */
 
 
     public StringBuffer makeRequest(URL url) throws IOException {

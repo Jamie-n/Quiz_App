@@ -13,9 +13,9 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import quizApp.quizz.QuestionController;
-import quizApp.quizz.TriviaQuestion;
-import quizApp.quizz.UrlRequest;
+import quizApp.API.QuestionController;
+import quizApp.API.TriviaQuestion;
+import quizApp.API.UrlRequest;
 import quizApp.resultScene.ResultController;
 
 import java.net.URL;

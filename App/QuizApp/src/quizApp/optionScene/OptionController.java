@@ -11,15 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import quizApp.quizz.Categories;
-import quizApp.quizz.UrlRequest;
+import quizApp.API.Categories;
+import quizApp.API.UrlRequest;
 import quizApp.startQuizScene.StartQuizController;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class  OptionController implements Initializable {
     @FXML
